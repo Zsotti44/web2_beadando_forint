@@ -6,7 +6,7 @@
             <h1 class="display-1 jumboh1color">Magyar forint</h1>
             <div class="container">
                 <h4 class="py-3">A magyar forint (HUF) Magyarország hivatalos fizetőeszköze, amelyet 1946. augusztus 1-jén vezettek be a pengő helyett, egy nagy inflációt követően.</h4>
-                <h4 class="py-3">A forint érméi és bankjegyei különböző címletekben kerültek forgalomba. Az érmék jelenleg 5, 10, 20, 50, 100 és 200 forintos címletekben érhetők el, míg a bankjegyek 500-tól egészen 20 000 forintig terjednek. A bankjegyeket a Magyar Nemzeti Bank bocsátja ki, és rendszeresen újítják meg a biztonsági elemeket a hamisítás elleni védelem érdekében.</h4>
+                <h4 class="py-3">A forint érméi és bankjegyei különböző címletekben kerültek forgalomba. Az érmék jelenleg <b>5, 10, 20, 50, 100 és 200</b> forintos címletekben érhetők el, míg a bankjegyek <b>500,1000,2000,5000,10000,20000</b>. A bankjegyeket a Magyar Nemzeti Bank bocsátja ki, és rendszeresen újítják meg a biztonsági elemeket a hamisítás elleni védelem érdekében.</h4>
                 <table class="table table-bordered text-center transparent-table">
                     <thead>
                     <tr>
