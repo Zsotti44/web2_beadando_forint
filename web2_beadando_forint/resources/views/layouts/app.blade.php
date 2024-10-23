@@ -72,9 +72,17 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
+
+        <footer>
+            <div class="container-fluid footer text-center">
+            &copy; Sándor Adrián, Katona Zsolt
+
+            </div>
+
+        </footer>
     </div>
 </body>
 </html>
