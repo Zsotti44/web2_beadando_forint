@@ -33,6 +33,16 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/') }}">{{ __('Főoldal') }}</a>
                         </li>
+                        @if(Auth::check())
+                            <li class="nav-item" >
+                                <a class="nav-link" href="{{ url('/') }}">{{ __('Információk') }}</a>
+                            </li>
+                        @endif
+                        @if(Auth::check() && Auth::user()->role === 'admin')
+                        <li class="nav-item" >
+                            <a class="nav-link" href="{{ url('/') }}">{{ __('Adminisztáció') }}</a>
+                        </li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
