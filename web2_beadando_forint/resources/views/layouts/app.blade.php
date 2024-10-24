@@ -91,7 +91,7 @@
                                 <span class="dropdown-toggle">Dropdown</span>
                             </a>
                             <div class="dropdown-menu m-0">
-                                <a href="feature.html" class="dropdown-item">Teszt dropdown</a>
+                                <a href="{{ url('/') }}" class="dropdown-item">Teszt dropdown</a>
                             </div>
                         </div>
                     </div>
