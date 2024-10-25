@@ -19,3 +19,5 @@ Route::get('/teszt', function () {
     $ermek = Erme::all();
     return view('teszt.index', compact('ermek'));
 });
+
+Route::any('/soap', [App\Http\Controllers\SoapServerController::class, 'index']);
