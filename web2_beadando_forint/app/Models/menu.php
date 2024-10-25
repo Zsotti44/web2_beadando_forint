@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class menu extends Model
+class Menu extends Model
 {
     use HasFactory;
 
-    protected $table = 'menu';
+    protected $table = 'menus';
     protected $primaryKey = 'menuid';
     public $incrementing = true;
     public $timestamps = false;
@@ -22,6 +22,13 @@ class menu extends Model
             'role' => 'string',
             'menu_title' => 'string',
             'parent' => 'integer',
+            'menu_order' => 'integer',
+            'active' => 'integer',
+
         ];
+    }
+    public function children()
+    {
+        return $this->hasMany(self::class, 'parent');
     }
 }

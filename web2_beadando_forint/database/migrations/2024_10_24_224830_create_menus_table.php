@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('menu_title');
             $table->string('role');
             $table->integer('parent');
+            $table->integer('menu_order');
+            $table->boolean('active')->default(1);
+
         });
     }
 

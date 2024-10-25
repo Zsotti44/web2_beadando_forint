@@ -24,6 +24,7 @@
 
 </head>
 <body>
+
     <div id="app">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -79,21 +80,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="{{ url('/') }}" class="nav-item nav-link active">{{ __('Főoldal') }}</a>
-                        @if(Auth::check())
-                            <a href="{{ url('/') }}" class="nav-item nav-link ">{{ __('Információk') }}</a>
-                        @endif
-                        @if(Auth::check() && Auth::user()->role === 'admin')
-                            <a href="{{ url('/') }}" class="nav-item nav-link ">{{ __('Adminisztáció') }}</a>
-                        @endif
-                            <div class="nav-item dropdown">
-                            <a href="#" class="nav-link" data-bs-toggle="dropdown">
-                                <span class="dropdown-toggle">Dropdown</span>
-                            </a>
-                            <div class="dropdown-menu m-0">
-                                <a href="{{ url('/') }}" class="dropdown-item">Teszt dropdown</a>
-                            </div>
-                        </div>
+                        @include('layouts/menu')
                     </div>
                 </div>
             </nav>

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Providers;
+use App\Models\menu;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -19,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $menuitems = Menu::where('active',1)->orderBy('menu_order')->get();
+        view()->share('menuitems', $menuitems);
     }
 }
