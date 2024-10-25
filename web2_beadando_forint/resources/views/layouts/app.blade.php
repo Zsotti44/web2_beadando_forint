@@ -191,8 +191,6 @@
     <script src="{{ URL::asset('assets/lib/lightbox/js/lightbox.min.js') }}"></script>
     <script src="{{ URL::asset('assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/main.js') }}"></script>
-<?php
-phpinfo();
-?>
+
 </body>
 </html>

@@ -20,6 +20,6 @@ class MNBController extends Controller
         // Például hívj meg egy SOAP funkciót
         $result = $this->mnbService->call('GetCurrencies');
         //$result->GetCurrenciesResult();
-        return response()->json($result);
+        return response()->json($result->GetCurrenciesResult);
     }
 }
