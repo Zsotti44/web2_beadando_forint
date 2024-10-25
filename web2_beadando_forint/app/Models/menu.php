@@ -13,7 +13,7 @@ class Menu extends Model
     protected $primaryKey = 'menuid';
     public $incrementing = true;
     public $timestamps = false;
-    protected $fillable = ['menuid', 'menu_nev','view','menu_title','parent','role'];
+    protected $fillable = ['menuid', 'menu_nev','view','menu_title','parent','role','active','menu_order'];
     protected function casts(): array
     {
         return [

@@ -6,7 +6,9 @@
         <div class="container-fluid service py-5">
             <div class="container py-5">
                 <div class="row g-4">
-                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+                    <h3 class="mb-3">Bankjegyek</h3>
+
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="service-item">
                             <div class="service-img">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/500_forint_elolap.png" class="img-fluid rounded-top w-100" alt="500 forintos bankjegy">
@@ -19,7 +21,7 @@
                         </div>
                     </div>
                     <!-- Kártya 2 -->
-                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="service-item">
                             <div class="service-img">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/HUF_1000_2018_obverse.png" class="img-fluid rounded-top w-100" alt="1000 forintos bankjegy">
@@ -33,7 +35,7 @@
                     </div>
 
                     <!-- Kártya 3 -->
-                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="service-item">
                             <div class="service-img">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/2000_HUF_2017_ob.jpg" class="img-fluid rounded-top w-100" alt="2000 forintos bankjegy">
@@ -47,7 +49,7 @@
                     </div>
 
                     <!-- Kártya 4 -->
-                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="service-item">
                             <div class="service-img">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/5000_HUF_2017_ob.jpg" class="img-fluid rounded-top w-100" alt="5000 forintos bankjegy">
@@ -61,7 +63,7 @@
                     </div>
 
                     <!-- Kártya 5 -->
-                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="service-item">
                             <div class="service-img">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/10000_HUF_2014_ob.jpg" class="img-fluid rounded-top w-100" alt="10 000 forintos bankjegy">
@@ -75,7 +77,7 @@
                     </div>
 
                     <!-- Kártya 6 -->
-                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="service-item">
                             <div class="service-img">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/20000_HUF_2015_ob.png/800px-20000_HUF_2015_ob.png" class="img-fluid rounded-top w-100" alt="20 000 forintos bankjegy">
@@ -88,10 +90,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="row g-4">
+                <div class="row g-4 py-4">
                     <h3 class="mb-3">Érmék</h3>
                     <!-- Kártya 1 -->
-                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="service-item">
                             <div class="service-img">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/5_Forint-el%C5%91lap.jpg" class="img-fluid rounded-top w-100" alt="5 forintos érme">
@@ -105,7 +107,7 @@
                     </div>
 
                     <!-- Kártya 2 -->
-                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="service-item">
                             <div class="service-img">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/2020_e.jpg" class="img-fluid rounded-top w-100" alt="10 forintos érme">
@@ -119,7 +121,7 @@
                     </div>
 
                     <!-- Kártya 3 -->
-                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="service-item">
                             <div class="service-img">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/2020_e20.jpg" class="img-fluid rounded-top w-100" alt="20 forintos érme">
@@ -133,7 +135,7 @@
                     </div>
 
                     <!-- Kártya 4 -->
-                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="service-item">
                             <div class="service-img">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/b/bb/50_Forint_Comemmorative_Ambulance_Front.jpg" class="img-fluid rounded-top w-100" alt="50 forintos érme">
@@ -147,7 +149,7 @@
                     </div>
 
                     <!-- Kártya 5 -->
-                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="service-item">
                             <div class="service-img">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/100_Forint_Comemmorative_Army_Front.jpg" class="img-fluid rounded-top w-100" alt="100 forintos érme">
@@ -161,7 +163,7 @@
                     </div>
 
                     <!-- Kártya 6 -->
-                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="service-item">
                             <div class="service-img">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/200_Forint_Pet%C5%91fi_Comemmorative.jpg" class="img-fluid rounded-top w-100" alt="200 forintos érme">
