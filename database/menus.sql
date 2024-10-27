@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Okt 25. 12:51
+-- Létrehozás ideje: 2024. Okt 27. 18:02
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -43,12 +43,13 @@ CREATE TABLE `menus` (
 --
 
 INSERT INTO `menus` (`menuid`, `menu_nev`, `view`, `menu_title`, `role`, `parent`, `menu_order`, `active`) VALUES
-(1, 'Főoldal', '', 'Főoldal', 'none', 0, 1, 1),
+(1, 'Főoldal', '/', 'Főoldal', 'none', 0, 1, 1),
 (2, 'Információk', '', 'Információk', 'user', 0, 2, 1),
 (3, 'Admin', 'admin', 'Adminisztráció', 'admin', 0, 3, 1),
 (4, 'Teszt', 'teszt', 'Teszt', 'none', 0, 4, 1),
-(5, 'Dropdown', '', 'Dropdown', 'none', 0, 5, 1),
-(6, 'Dropdown', '', 'Dropdown', 'none', 5, 1, 1);
+(6, 'Menük', '', 'Admin- Menük', 'none', 3, 1, 1),
+(7, 'PDF', 'pdf', 'PDF Generátor', 'none', 0, 6, 1),
+(8, 'MNB SOAP', 'mnb', 'MNB SOAP', 'none', 0, 7, 1);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -68,7 +69,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT a táblához `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `menuid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `menuid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
