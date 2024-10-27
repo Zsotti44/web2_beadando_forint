@@ -1,13 +1,52 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="container content my-5 ">
+        <h3 class="text-center">Fedezze fel a Magyar Pénzérmék Különleges Fémösszetételét!</h3>
+        <p>
+            A magyar pénzérmék nem csupán a mindennapi tranzakciók eszközei; egyben a hazánk gazdasági örökségének fontos részét képezik.
+            Ezek a fémes csodák az érték és a minőség szimbólumai, melyek a legmodernebb technológiával és precíziós tervezéssel készültek.
+            Ismerje meg, mitől különlegesek a magyar pénzérmék fémösszetevői!
+        </p>
+
+        <h5>Kiváló Minőség, Kiválasztott Anyagok</h5>
+        <p>
+            A forgalomban lévő magyar pénzérmék, mint például az 1, 2, 5, 10, 20, 50, 100 és 200 forintos érmék,
+            különböző fémekből készülnek, amelyek garantálják a tartósságot és a hosszú élettartamot.
+            Az érmék legfőbb összetevői a réz, a nikkel és az alumínium, amelyek egyedi ötvözetei biztosítják a pénzérmék magas ellenállóságát a kopással és a korrózióval szemben.
+        </p>
+
+        <h5>Tartósság és Esztétikai Élmény</h5>
+        <p>
+            A fémösszetétel nem csupán a pénzérmék tartósságát garantálja, hanem esztétikai élményét is.
+            A különböző fémekből készült érmék csillogása és színe játékos vizuális hatást nyújt,
+            amely örömet okoz a használóknak. A különböző forint érmék mintázatai és a fémes felületek egyedülálló kombinációja
+            nem csupán a használat során, hanem a gyűjtők számára is vonzóvá teszi őket.
+        </p>
+
+        <h5>Fenntarthatóság és Újrahasznosítás</h5>
+        <p>
+            A magyar pénzérmék fémösszetétele nemcsak a tartósságra, hanem a fenntarthatóságra is hangsúlyt fektet.
+            Az érmék gyártása során alkalmazott fémek könnyen újrahasznosíthatók, így hozzájárulnak a környezetvédelemhez és a fenntartható gazdasághoz.
+        </p>
+
+        <h5>Válassza a Biztonságos és Megbízható Pénzérméket!</h5>
+        <p>
+            A magyar pénzérmék fémösszetétele a minőség és a megbízhatóság garanciája.
+            Legyen szó napi vásárlásokról vagy gyűjtésről, a magyar pénzérmék mindig a legjobb választás!
+            Fedezze fel a hazai pénzérmék szépségét és értékét, és tapasztalja meg, hogy mit jelent a valódi magyar pénz!
+        </p>
+    </div>
     <div class="container my-5">
-        <h2 class="text-center mb-4">Magyar Bankjegyek és Pénzérmék</h2>
+        @livewire('ermek')
+
+    </div>
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Jelenleg forgalomban lévő bankjegyek és pénzérmék</h2>
         <div class="container-fluid service py-5">
             <div class="container py-5">
                 <div class="row g-4">
                     <h3 class="mb-3">Bankjegyek</h3>
-
                     <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="service-item">
                             <div class="service-img">

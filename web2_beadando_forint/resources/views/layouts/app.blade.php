@@ -122,7 +122,7 @@
 
         </div>
         <!-- Navbar & Hero End -->
-        <main class="py-0">
+        <main class="py-0 ">
             @yield('content')
 
         </main>

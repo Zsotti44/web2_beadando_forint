@@ -16,4 +16,14 @@ class Erme extends Model
     public $timestamps = false;
 
     protected $fillable = ['ermeid', 'cimlet', 'tomeg', 'darab', 'kiadas', 'bevonas'];
+
+    public function anyagok()
+    {
+        return $this->belongsToMany(Anyag::class, 'akod', 'ermeid', 'femid');
+    }
+
+    public function tervezok()
+    {
+        return $this->belongsToMany(Tervezo::class, 'tkod', 'ermeid', 'tervezoid');
+    }
 }
