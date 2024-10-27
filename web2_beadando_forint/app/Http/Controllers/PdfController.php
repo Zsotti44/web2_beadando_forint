@@ -18,7 +18,7 @@ class PdfController extends Controller
         $ermek = Erme::all();
         $anyagok = Anyag::all();
         $tervezok = Tervezo::all();
-        return view('pdf.pdf', compact('ermek', 'anyagok', 'tervezok'));
+        return view('PDF.pdf', compact('ermek', 'anyagok', 'tervezok'));
     }
     public function generatePDF(Request $request)
     {
@@ -27,7 +27,7 @@ class PdfController extends Controller
         $tervezo = Tervezo::find($request->input('tid'));
 
         // Nézet renderelése HTML-be
-        $html = view('pdf.layout', compact('erme', 'anyag', 'tervezo'))->render();
+        $html = view('PDF.layout', compact('erme', 'anyag', 'tervezo'))->render();
 
         // TCPDF inicializálása és beállítása
         $pdf = new TCPDF();

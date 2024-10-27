@@ -17,9 +17,7 @@ class MNBController extends Controller
 
     public function index()
     {
-        // Például hívj meg egy SOAP funkciót
-        $result = $this->mnbService->call('GetCurrencies');
-        //$result->GetCurrenciesResult();
-        return response()->json($result->GetCurrenciesResult);
+
+        return view('MNB.index');
     }
 }

@@ -21,7 +21,6 @@
     <link href="{{ URL::asset('assets/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet">
-
 </head>
 <body>
 
@@ -123,9 +122,9 @@
 
         </div>
         <!-- Navbar & Hero End -->
-
         <main class="py-0">
             @yield('content')
+
         </main>
 
         <!-- Footer Start -->
@@ -191,6 +190,5 @@
     <script src="{{ URL::asset('assets/lib/lightbox/js/lightbox.min.js') }}"></script>
     <script src="{{ URL::asset('assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/main.js') }}"></script>
-
 </body>
 </html>
