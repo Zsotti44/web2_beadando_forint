@@ -26,7 +26,10 @@ class SoapServerController extends Controller
             
             try {
                 $wsdl = $autoDiscover->generate();
-                return response($wsdl->toXml())->header('Content-Type', 'text/xml');
+                $wsdlXml = $wsdl->toXml();
+                file_put_contents(storage_path('soap.wsdl'), $wsdlXml);
+
+                return response($wsdlXml)->header('Content-Type', 'text/xml');
             } catch (\Exception $e) {
                 return response("Error generating WSDL: " . $e->getMessage(), 500);
             }

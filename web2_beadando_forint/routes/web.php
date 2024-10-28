@@ -25,3 +25,5 @@ Route::get('/admin/menuk', [\App\Http\Controllers\AdminController::class, 'menuk
 
 /* API / SOAP*/
 Route::any('/soap', [App\Http\Controllers\SoapServerController::class, 'index']);
+
+Route::get('/client/ermek', [App\Http\Controllers\SoapClientController::class, 'getErmek']);
