@@ -11,7 +11,22 @@ Auth::routes();
 
 Route::get('/pdf', [App\Http\Controllers\PdfController::class, 'index'])->name('pdf');
 Route::post('/generate-pdf', [App\Http\Controllers\PdfController::class, 'generatePDF']);
-Route::get('/mnb', [\App\Http\Controllers\MNBController::class, 'index'])->name('mnb');
+
+/**
+ * MNB-s controllerek egy helyen /mnb prefixel
+ */
+Route::prefix('/mnb')->group(function () {
+    Route::get('/mnb', [\App\Http\Controllers\MNBController::class, 'index'])->name('mnb/mnb');
+    Route::get('/getWsdl', [\App\Http\Controllers\MNBController::class, 'getWsdl']);
+    Route::get('/getAllCurrencies', [\App\Http\Controllers\MNBController::class, 'getAllCurrencies']);
+    Route::post('/getDailyRate', [\App\Http\Controllers\MNBController::class, 'getDailyRate']);
+    Route::post('/getMonthlyRates', [\App\Http\Controllers\MNBController::class, 'getMonthlyRates']);
+    Route::post('/getCurrencyPair', [\App\Http\Controllers\MNBController::class,'getCurrencyPair']);
+    Route::get('/exchangeRate', [\App\Http\Controllers\MNBController::class, 'exchangeRate'])->name('mnb/exchangeRate');
+    Route::get('/monthlyExchangeRate', [\App\Http\Controllers\MNBController::class, 'monthlyExchangeRate'])->name('mnb/monthlyExchangeRate');
+    Route::get('/showCurrencyPair', [\App\Http\Controllers\MNBController::class, 'showCurrencyPair'])->name('mnb/showCurrencyPair');
+});
+
 Route::get('/teszt', function () {
     $ermek = Erme::all();
     return view('teszt.index', compact('ermek'));

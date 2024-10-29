@@ -7,12 +7,14 @@ use Carbon\Carbon;
 class MNBService
 {
     protected $client;
+    protected $wsdl;
+
     public function __construct()
     {
-        // Itt add meg a WSDL URL-t
-        $wsdl = 'https://www.mnb.hu/arfolyamok.asmx?wsdl';
-        $this->client = new \SoapClient($wsdl);
+        $this->wsdl = config('services.mnb.mnb_wsdl_url');
+        $this->client = new \SoapClient($this->wsdl);
     }
+
     public function call($functionName, $parameters = [])
     {
         try {
@@ -22,7 +24,14 @@ class MNBService
         }
     }
 
-    public function GetAllCurrencies()
+    public function getWsdl() 
+    {
+        $response = file_get_contents($this->wsdl);
+        //error_log("wsdl: " . print_r($response, true));
+        return $response;
+    }
+
+    public function getAllCurrencies()
     {
         $response = $this->call('GetCurrencies');
         $xml = new \SimpleXMLElement($response->GetCurrenciesResult);
@@ -32,6 +41,7 @@ class MNBService
         }
         return $temp;
     }
+
     public function getDailyRate($date,$currency)
     {
         $params = [
@@ -54,7 +64,6 @@ class MNBService
     // Havi árfolyam lekérdezése
     public function getMonthlyRates($currency,$year,$month)
     {
-
         $startDate = Carbon::create($year, $month, 1)->format('Y-m-d');
         $endDate = Carbon::create($year, $month, 1)->endOfMonth()->format('Y-m-d');
 

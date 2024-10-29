@@ -49,7 +49,11 @@ INSERT INTO `menus` (`menuid`, `menu_nev`, `view`, `menu_title`, `role`, `parent
 (4, 'Teszt', 'teszt', 'Teszt', 'none', 0, 4, 1),
 (6, 'Menük', '', 'Admin- Menük', 'none', 3, 1, 1),
 (7, 'PDF', 'pdf', 'PDF Generátor', 'none', 0, 6, 1),
-(8, 'MNB SOAP', 'mnb', 'MNB SOAP', 'none', 0, 7, 1);
+(8, 'MNB Adatszolgáltatás', 'mnb', 'MNB SOAP', 'none', 0, 7, 1),
+(9, 'Adatszolgáltatás', 'mnb/mnb', 'MNB SOAP service', 'none', 8, 8, 1),
+(10, 'Napi árfolyamok', 'mnb/exchangeRate', 'Árfolyam lekérdezés', 'none', 8, 9, 1),
+(11, 'Havi árfolyamok', 'mnb/monthlyExchangeRate', 'Árfolyam lekérdezés', 'none', 8, 10, 1),
+(12, 'Devizapárok', 'mnb/showCurrencyPair', 'Devizapárok lekérése', 'none', 8, 11, 1);
 
 --
 -- Indexek a kiírt táblákhoz

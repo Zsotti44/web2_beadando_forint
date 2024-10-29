@@ -38,4 +38,8 @@ return [
     'soap' => [
         'wsdl_url' => env('SOAP_WSDL_URL', 'http://127.0.0.1:8000/soap?wsdl'),
     ],
+
+    'mnb' => [
+        'mnb_wsdl_url' => env('MNB_SOAP_WSDL_URL', 'https://www.mnb.hu/arfolyamok.asmx?wsdl'),
+    ],
 ];
