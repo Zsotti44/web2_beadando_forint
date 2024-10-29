@@ -21,13 +21,17 @@ class SoapServerController extends Controller
         } else {
             // Ha GET kérés érkezik, WSDL fájlt kell generálnia
             $autoDiscover = new AutoDiscover();
-            $autoDiscover->setClass(SoapService::class);
-            $autoDiscover->setUri(url('/soap'));
+            $autoDiscover->setClass(SoapService::class)
+                         ->setUri(url('/soap'))
+                         ->setBindingStyle([
+                            'style' => 'document',
+                            'transport' => 'http://schemas.xmlsoap.org/soap/http', // SOAP 1.1-hez szükséges URI
+                        ]);
             
             try {
                 $wsdl = $autoDiscover->generate();
                 $wsdlXml = $wsdl->toXml();
-                file_put_contents(storage_path('soap.wsdl'), $wsdlXml);
+                //file_put_contents(storage_path('soap.wsdl'), $wsdlXml);
 
                 return response($wsdlXml)->header('Content-Type', 'text/xml');
             } catch (\Exception $e) {

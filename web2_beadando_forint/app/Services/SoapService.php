@@ -18,7 +18,12 @@ class SoapService
      */
     public function getErmek()
     {
-        return Erme::all()->toArray();
+        error_log('jo a hely');
+        $ermek = Erme::all()->toArray();
+        foreach ($ermek as $erme) {
+            error_log("Elem: " . print_r($erme, true));
+        } 
+        return $ermek;
     }
 
     /**
@@ -59,5 +64,15 @@ class SoapService
     public function getTKodok()
     {
         return TKod::all()->toArray();
+    }    
+
+    /**
+     * teszteles
+     * 
+     * @return array
+     */
+    public function getHello()
+    {
+        return "Helloka";
     }    
 }
