@@ -1,61 +1,63 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container mt-5 my-5">
+    <div class="container mt-4 my-5">
         <h2 class="text-center mb-4">Havi árfolyam</h2>
-        <form id="exchange-form" class="p-4 bg-light border rounded">
+        <form id="exchange-form" class="card p-3 mb-4">
             @csrf
+            <div class="row">
+                <!-- Devizanem -->
+                <div class="col">
+                    <label for="deviza">Devizák:</label>
+                    <select class="form-control" id="deviza" name="deviza" required>
+                        <option value="">Válasszon devizanemet</option>
+                        @foreach ($devizak as $deviza)
+                            <option value="{{ $deviza }}">{{ $deviza }}</option>
+                        @endforeach
+                    </select>
+                </div>
 
-            <!-- Devizanem -->
-            <div class="form-group">
-                <label for="deviza">Devizák:</label>
-                <select class="form-control" id="deviza" name="deviza" required>
-                    <option value="">Válasszon devizanemet</option>
-                    @foreach ($devizak as $deviza)
-                        <option value="{{ $deviza }}">{{ $deviza }}</option>
-                    @endforeach
-                </select>
+                <!-- Év -->
+                <div class="col">
+                    <label for="ev">Év:</label>
+                    <input class="form-control" type="number" id="ev" name="ev" required>
+                </div>
+
+                <!-- Havi árfolyamok -->
+                <div class="col">
+                    <label for="havi">Hónap:</label>
+                    <select class="form-control" id="havi" name="havi" required>
+                        <option value="1">Január</option>
+                        <option value="2">Február</option>
+                        <option value="3">Március</option>
+                        <option value="4">Április</option>
+                        <option value="5">Május</option>
+                        <option value="6">Június</option>
+                        <option value="7">Július</option>
+                        <option value="8">Augusztus</option>
+                        <option value="9">Szeptember</option>
+                        <option value="10">Október</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <br>
+                    <button type="submit" class="btn btn-primary">Árfolyam lekérdezése</button>
+                </div>
             </div>
-
-            <!-- Év -->
-            <div class="form-group">
-                <label for="ev">Év:</label>
-                <input class="form-control" type="number" id="ev" name="ev" required>
-            </div>
-
-            <!-- Havi árfolyamok -->
-            <div class="form-group">
-                <label for="havi">Hónap:</label>
-                <select class="form-control" id="havi" name="havi" required>
-                    <option value="1">Január</option>
-                    <option value="2">Február</option>
-                    <option value="3">Március</option>
-                    <option value="4">Április</option>
-                    <option value="5">Május</option>
-                    <option value="6">Június</option>
-                    <option value="7">Július</option>
-                    <option value="8">Augusztus</option>
-                    <option value="9">Szeptember</option>
-                    <option value="10">Október</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                </select>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-block my-5">Árfolyam lekérdezése</button>
+            <br>
+            <table class="table table-bordered" id="rates-table">
+                <thead>
+                    <tr>
+                        <th>Dátum</th>
+                        <th>Napi árfolyam</th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                </tbody>
+            </table>
         </form>
-        <br>
-        <table class="table table-bordered" id="rates-table">
-            <thead>
-                <tr>
-                    <th>Dátum</th>
-                    <th>Napi árfolyam</th>
-                </tr>
-            </thead>
-            <tbody>
-            
-            </tbody>
-        </table>
-
         <canvas id="exchangeRateChart" width="400" height="200"></canvas>
     </div>
 

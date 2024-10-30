@@ -1,31 +1,43 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container mt-5 my-5">
+    <div class="container mt-4 my-5">
         <h2 class="text-center mb-4">Napi árfolyam</h2>
-        <form id="exchange-form" class="p-4 bg-light border rounded">
+        <div class="alert alert-warning d-flex align-items-center" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2" style="font-size: 1.5em;"></i>
+            <div>
+                <strong>Figyelem!</strong> A szolgáltatás csak hétköznapokra tud árfolyam adatokat megjeleníteni.
+                Kérjük, válasszon hétköznapi dátumot.
+            </div>
+        </div>
+        
+        <form id="exchange-form" class="card p-3 mb-4">
             @csrf
+            <div class="row">
+                <!-- Devizanem -->
+                <div class="col">
+                    <label for="deviza">Devizák:</label>
+                    <select class="form-control" id="deviza" name="deviza" required>
+                        <option value="">Válasszon devizanemet</option>
+                        @foreach ($devizak as $deviza)
+                            <option value="{{ $deviza }}">{{ $deviza }}</option>
+                        @endforeach
+                    </select>
+                </div>
 
-            <!-- Devizanem -->
-            <div class="form-group">
-                <label for="deviza">Devizák:</label>
-                <select class="form-control" id="deviza" name="deviza" required>
-                    <option value="">Válasszon devizanemet</option>
-                    @foreach ($devizak as $deviza)
-                        <option value="{{ $deviza }}">{{ $deviza }}</option>
-                    @endforeach
-                </select>
+                <!-- Dátum -->
+                <div class="col">
+                    <label for="datum">Dátum:</label>
+                    <input class="form-control" type="date" id="datum" name="datum">
+                </div>
+                <div class="col">
+                    <br>
+                    <button type="submit" class="btn btn-primary">Árfolyam lekérdezése</button>
+                </div>
+                <div class="mt-3">
+                    <strong id="exchange-result"></strong>
+                </div>
             </div>
-
-            <!-- Dátum -->
-            <div class="form-group">
-                <label for="datum">Dátum:</label>
-                <input class="form-control" type="date" id="datum" name="datum">
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-block my-5">Árfolyam lekérdezése</button>
         </form>
-        <br>
-        <h2 id="exchange-result"></h2>
     </div>
 
     <script>
