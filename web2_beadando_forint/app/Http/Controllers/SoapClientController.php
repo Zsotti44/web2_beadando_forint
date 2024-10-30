@@ -15,6 +15,14 @@ class SoapClientController extends Controller
         $this->soapClient = $soapClient;
     } 
 
+    /**
+     * SOAP szolgáltatás menüpont
+     */
+    public function index() 
+    {
+        return view("SOAPclient.index");
+    }
+
     public function getErmek() {
         error_log('getErmekben vagyunk');
         $functionName = 'getErmek';

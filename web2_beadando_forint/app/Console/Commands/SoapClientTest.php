@@ -30,8 +30,8 @@ class SoapClientTest extends Command
             $params = []; 
             
             $response = $client->__soapCall($functionName, $params);
-    
-            error_log("SOAP válasz a getErme hívásra: " . print_r($response, true));
+            error_log(json_encode($response));
+            //error_log("SOAP válasz a getErme hívásra: " . print_r($response, true));
     
         } catch (SoapFault $e) {
             error_log("SOAP Request Error: " . $e->getMessage());

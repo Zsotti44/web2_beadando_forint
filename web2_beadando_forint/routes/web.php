@@ -27,11 +27,6 @@ Route::prefix('/mnb')->group(function () {
     Route::get('/showCurrencyPair', [\App\Http\Controllers\MNBController::class, 'showCurrencyPair'])->name('mnb/showCurrencyPair');
 });
 
-Route::get('/teszt', function () {
-    $ermek = Erme::all();
-    return view('teszt.index', compact('ermek'));
-})->name('teszt');
-
 Route::get('informaciok', [App\Http\Controllers\InformacioController::class,'index'])->name('informaciok');
 
 /* ADMIN */
@@ -40,5 +35,6 @@ Route::get('/admin/menuk', [\App\Http\Controllers\AdminController::class, 'menuk
 
 /* API / SOAP*/
 Route::any('/soap', [App\Http\Controllers\SoapServerController::class, 'index']);
+Route::get('/soapData', [\App\Http\Controllers\SoapClientController::class, 'index'])->name('soapData');
 
 Route::get('/client/ermek', [App\Http\Controllers\SoapClientController::class, 'getErmek']);
