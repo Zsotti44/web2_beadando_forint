@@ -46,7 +46,7 @@ INSERT INTO `menus` (`menuid`, `menu_nev`, `view`, `menu_title`, `role`, `parent
 (1, 'Főoldal', '/', 'Főoldal', 'none', 0, 1, 1),
 (2, 'Információk', '', 'Információk', 'user', 0, 2, 1),
 (3, 'Admin', 'admin', 'Adminisztráció', 'admin', 0, 3, 1),
-(4, 'Teszt', 'teszt', 'Teszt', 'none', 0, 4, 1),
+(4, 'SOAP szolgátatás', 'soapData', 'SOAP szolgátatás', 'none', 0, 4, 1),
 (6, 'Menük', '', 'Admin- Menük', 'none', 3, 1, 1),
 (7, 'PDF', 'pdf', 'PDF Generátor', 'none', 0, 6, 1),
 (8, 'MNB Adatszolgáltatás', 'mnb', 'MNB SOAP', 'none', 0, 7, 1),
