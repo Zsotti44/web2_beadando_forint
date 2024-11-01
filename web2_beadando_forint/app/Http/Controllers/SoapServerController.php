@@ -13,8 +13,7 @@ class SoapServerController extends Controller
     {
         if ($request->isMethod('post')) {
 
-            $server = new Server(url('/soap.wsdl'), [
-                'uri' => 'http://localhost:8080',
+            $server = new Server(url('/soap?wsdl'), [
             ]);
             $server->setClass(SoapService::class);
             $server->handle();

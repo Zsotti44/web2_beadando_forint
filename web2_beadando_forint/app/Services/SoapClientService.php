@@ -13,7 +13,7 @@ class SoapClientService
     {
         ini_set('default_socket_timeout', 20);
         try {
-            $this->client = new SoapClient(url('/soap.wsdl'), [
+            $this->client = new SoapClient(url('/soap?wsdl'), [
                     'trace' => true,
                     'exceptions' => true,
                     'cache_wsdl' => WSDL_CACHE_NONE,
