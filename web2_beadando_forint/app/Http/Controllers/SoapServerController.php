@@ -12,12 +12,14 @@ class SoapServerController extends Controller
     public function index(Request $request)
     {
         if ($request->isMethod('post')) {
-            $server = new Server(null, [
-                'uri' => url('/soap')
+
+            $server = new Server(url('/soap.wsdl'), [
+                'uri' => 'http://localhost:8080',
             ]);
             $server->setClass(SoapService::class);
             $server->handle();
-            return response('')->header('Content-Type', 'text/xml');
+
+            return response()->header('Content-Type', 'text/xml');
         } else {
             // Ha GET kérés érkezik, WSDL fájlt kell generálnia
             $autoDiscover = new AutoDiscover();
@@ -27,7 +29,7 @@ class SoapServerController extends Controller
                             'style' => 'document',
                             'transport' => 'http://schemas.xmlsoap.org/soap/http', // SOAP 1.1-hez szükséges URI
                         ]);
-            
+
             try {
                 $wsdl = $autoDiscover->generate();
                 $wsdlXml = $wsdl->toXml();

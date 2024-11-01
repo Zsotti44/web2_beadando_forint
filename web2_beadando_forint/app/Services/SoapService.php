@@ -11,24 +11,18 @@ use App\Models\Tervezo;
 
 class SoapService
 {
-    /**
-     * Ermek lekerdezese
-     * 
-     * @return array
-     */
     public function getErmek()
     {
-        error_log('jo a hely');
         $ermek = Erme::all()->toArray();
-        foreach ($ermek as $erme) {
-            error_log("Elem: " . print_r($erme, true));
-        } 
-        return $ermek;
+
+        return (object)[
+            'getErmekResult' => $ermek
+        ];
     }
 
     /**
      * Anyagok lekerdezese
-     * 
+     *
      * @return array
      */
     public function getAnyagok()
@@ -38,7 +32,7 @@ class SoapService
 
     /**
      * Erme anyag osszetevoi
-     * 
+     *
      * @return array
      */
     public function getAKodok()
@@ -48,7 +42,7 @@ class SoapService
 
     /**
      * Tervezok lekerdezese
-     * 
+     *
      * @return array
      */
     public function getTervezok()
@@ -58,21 +52,21 @@ class SoapService
 
     /**
      * Erme tervezoi
-     * 
+     *
      * @return array
      */
     public function getTKodok()
     {
         return TKod::all()->toArray();
-    }    
+    }
 
     /**
      * teszteles
-     * 
+     *
      * @return array
      */
     public function getHello()
     {
         return "Helloka";
-    }    
+    }
 }

@@ -36,7 +36,7 @@ return [
     ],
 
     'soap' => [
-        'wsdl_url' => env('SOAP_WSDL_URL', 'http://127.0.0.1:8000/soap?wsdl'),
+        'wsdl_url' => env('SOAP_WSDL_URL', 'http://127.0.0.1:8000/soap.wsdl'),
     ],
 
     'mnb' => [

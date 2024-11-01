@@ -2,38 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use SoapClient;
+
 use App\Services\SoapClientService;
 
 class SoapClientController extends Controller
 {
-    protected $soapClient;
-
+    protected SoapClientService $soapClient;
     public function __construct(SoapClientService $soapClient)
     {
         $this->soapClient = $soapClient;
-    } 
+    }
 
-    /**
-     * SOAP szolgáltatás menüpont
-     */
-    public function index() 
+    public function index()
     {
         return view("SOAPclient.index");
     }
 
     public function getErmek() {
-        error_log('getErmekben vagyunk');
-        $functionName = 'getErmek';
-        $parameters = [];
-
-        $response = $this->soapClient->call($functionName,$parameters);
-        error_log('response után');
-        if ($response !== false) {
-            return response()->json(['response' => $response]);
-        } else {
-            return response()->json(['error' => 'Soap request failed'], 500);
-        }
+      return response()->json($this->soapClient->getAllErme());
     }
 }

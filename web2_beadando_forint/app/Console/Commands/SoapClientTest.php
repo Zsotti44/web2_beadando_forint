@@ -17,22 +17,23 @@ class SoapClientTest extends Command
     public function handle()
     {
         $options = [
-            'location' => 'http://127.0.0.1:8000/soap',
-            'uri' => 'http://127.0.0.1:8000/soap',
             'trace' => true,
             'exceptions' => true,
         ];
-        
-        $client = new SoapClient(null, $options);
-    
+
+        $client = new SoapClient(storage_path('/soap.wsdl'), $options);
+        error_log("SOAP client inicializálva");
+
         try {
             $functionName = 'getErmek';
-            $params = []; 
-            
+            $params = [];
+
             $response = $client->__soapCall($functionName, $params);
+            error_log($client->__getLastRequest());
+            error_log($client->__getLastResponse());
             error_log(json_encode($response));
             //error_log("SOAP válasz a getErme hívásra: " . print_r($response, true));
-    
+
         } catch (SoapFault $e) {
             error_log("SOAP Request Error: " . $e->getMessage());
         }
