@@ -11,6 +11,11 @@ use App\Models\Tervezo;
 
 class SoapService
 {
+    /**
+     * Ermek lekerdezese
+     *
+     * @return object
+     */
     public function getErmek()
     {
         $ermek = Erme::all()->toArray();
@@ -23,50 +28,61 @@ class SoapService
     /**
      * Anyagok lekerdezese
      *
-     * @return array
+     * @return object
      */
     public function getAnyagok()
     {
-        return Anyag::all()->toArray();
+        return (object)[
+         'getAnyagokResult' => Anyag::all()->toArray(),
+        ];
     }
 
     /**
      * Erme anyag osszetevoi
      *
-     * @return array
+     * @return object
      */
     public function getAKodok()
     {
-        return AKod::all()->toArray();
+        return (object)[
+            'getAKodokResult' => AKod::all()->toArray(),
+        ];
     }
 
     /**
      * Tervezok lekerdezese
      *
-     * @return array
+     * @return object
      */
     public function getTervezok()
     {
-        return Tervezo::all()->toArray();
+        return (object)[
+            'getTervezokResult' => Tervezo::all()->toArray(),
+        ];
     }
 
     /**
      * Erme tervezoi
      *
-     * @return array
+     * @return object
      */
     public function getTKodok()
     {
-        return TKod::all()->toArray();
+        return (object)[
+            'getTKodokResult' => TKod::all()->toArray(),
+        ];
+    }
+    /**
+     * Erme with all info
+     *
+     * @return object
+     */
+    public function getErmekWithAllInfo()
+    {
+        return (object)[
+            'getErmekWithAllInfoResult' => Erme::with(['anyagok', 'tervezok'])->get()->toArray(),
+        ];
     }
 
-    /**
-     * teszteles
-     *
-     * @return array
-     */
-    public function getHello()
-    {
-        return "Helloka";
-    }
+
 }

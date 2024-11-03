@@ -28,10 +28,28 @@ class SoapClientService
     public function getAllErme()
     {
         $response = $this->call('getErmek');
-
-
         return $response;
     }
+    public function getAnyagok() {
+        return $this->call('getAnyagok');
+    }
+    public function getTervezok()
+    {
+        return $this->call('getTervezok');
+    }
+    public function getTKodok(){
+        return $this->call('getTKodok');
+    }
+
+    public function getAKodok(){
+        return $this->call('getAKodok');
+    }
+
+    public function getErmekWithAllInfo()
+    {
+        return $this->call('getErmekWithAllInfo');
+    }
+
     public function call($function, $params = [])
     {
         if (!$this->client) {

@@ -18,7 +18,7 @@ class SoapServerController extends Controller
             $server->setClass(SoapService::class);
             $server->handle();
 
-            return response()->header('Content-Type', 'text/xml');
+          //  return response()->header('Content-Type', 'text/xml');
         } else {
             // Ha GET kérés érkezik, WSDL fájlt kell generálnia
             $autoDiscover = new AutoDiscover();

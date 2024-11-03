@@ -23,11 +23,10 @@
             </div>
             <br>
             <div id="results">
-                
+
             </div>
         </form>
     </div>
-
     <script>
         document.getElementById('data-form').addEventListener('submit', function(event) {
             event.preventDefault();
@@ -45,7 +44,7 @@
             const columns = {
                 erme: ['Érme azonosító', 'Címlet', 'Tömeg', 'Darabszám', 'Kiadás', 'Bevonás'],
                 tervezo: ['Tervező azonosító', 'Név'],
-                anyag: ['Anyag azonosító', 'Megnevezés'], 
+                anyag: ['Anyag azonosító', 'Megnevezés'],
             };
 
             const usedColumns = columns[dataSet];
@@ -75,7 +74,7 @@
                     });
                     table += '</tbody></table>';
                     document.getElementById('results').innerHTML = `<strong>${nameOfDataSet}</strong> ${table}`;
-            })      
+            })
             .catch(error => {
                 console.error('Hiba történt:', error);
                 document.getElementById('results').innerHTML = '<strong>Hiba történt az adatok lekérdezése során</strong>';

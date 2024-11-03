@@ -38,3 +38,9 @@ Route::any('/soap', [App\Http\Controllers\SoapServerController::class, 'index'])
 Route::get('/soapData', [\App\Http\Controllers\SoapClientController::class, 'index'])->name('soapData');
 
 Route::get('/client/ermek', [App\Http\Controllers\SoapClientController::class, 'getErmek'])->withoutMiddleware(['auth', 'isAdmin']);
+Route::get('/client/ermekwithallinfo', [App\Http\Controllers\SoapClientController::class, 'getErmekWithAllInfo'])->withoutMiddleware(['auth', 'isAdmin']);
+Route::get('/client/tervezok', [App\Http\Controllers\SoapClientController::class, 'getTervezok'])->withoutMiddleware(['auth', 'isAdmin']);
+Route::get('/client/anyagok', [App\Http\Controllers\SoapClientController::class, 'getAnyagok'])->withoutMiddleware(['auth', 'isAdmin']);
+Route::get('/client/tkodok', [App\Http\Controllers\SoapClientController::class, 'getTKodok'])->withoutMiddleware(['auth', 'isAdmin']);
+Route::get('/client/akodok', [App\Http\Controllers\SoapClientController::class, 'getAKodok'])->withoutMiddleware(['auth', 'isAdmin']);
+Route::get('/client/anyagok', [App\Http\Controllers\SoapClientController::class, 'getAnyagok'])->withoutMiddleware(['auth', 'isAdmin']);
