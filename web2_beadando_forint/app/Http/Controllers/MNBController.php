@@ -23,11 +23,14 @@ class MNBController extends Controller
     {
         return view('MNB.index');
     }
-
+    public function tecbdemo()
+    {
+        return view('MNB.techdemo');
+    }
     /**
      * MNB wsdl lekérés GET végponton szükség esetére
      */
-    public function getWsdl() 
+    public function getWsdl()
     {
         return $this->mnbService->getWsdl();
     }
@@ -35,7 +38,7 @@ class MNBController extends Controller
     /**
      * Elérhető devizanemek listája
      */
-    public function getAllCurrencies() 
+    public function getAllCurrencies()
     {
         return $this->mnbService->getAllCurrencies();
     }
@@ -43,7 +46,7 @@ class MNBController extends Controller
     /**
      * Adott napi árfolyam meghatározott devizára
      */
-    public function getDailyRate(Request $request) 
+    public function getDailyRate(Request $request)
     {
         $date = $request->json('date');
         $currency = $request->json('currency');
@@ -60,7 +63,7 @@ class MNBController extends Controller
     /**
      * Adott havi árfolyam meghatározott devizára
      */
-    public function getMonthlyRates(Request $request) 
+    public function getMonthlyRates(Request $request)
     {
         $currency = $request->json('currency');
         $year = $request->json('year');
@@ -77,7 +80,7 @@ class MNBController extends Controller
     /**
      * Devizapár árfolyam számítás meghatározott devizákra, dátumra
      */
-    public function getCurrencyPair(Request $request) 
+    public function getCurrencyPair(Request $request)
     {
         $date = $request->json('date');
         $currency1 = $request->json('currency1');
@@ -89,8 +92,8 @@ class MNBController extends Controller
         $currencyRate2 = $currency2 != "HUF" ? $this->mnbService->getDailyRate($date, $currency2) : 1;
 
         $currencyRate1 = str_replace(',','.',$currencyRate1);
-        $currencyRate2 = str_replace(',','.',$currencyRate2); 
-        
+        $currencyRate2 = str_replace(',','.',$currencyRate2);
+
         $curr1ToCurr2Rate = round(floatval($currencyRate1) / floatval($currencyRate2),4);
         $curr2ToCurr1Rate = round(floatval($currencyRate2) / floatval($currencyRate1),4);
 
@@ -102,10 +105,10 @@ class MNBController extends Controller
     /**
      * Napi árfolyamok menüpont
      */
-    public function exchangeRate() 
+    public function exchangeRate()
     {
         $devizak = Cache::get('available_currencies');
-        if (!$devizak) 
+        if (!$devizak)
         {
             $devizak = $this->getAllCurrencies();
             Cache::put('available_currencies', $devizak, 3600);
@@ -117,10 +120,10 @@ class MNBController extends Controller
     /**
      * Havi napi árfolyamok
      */
-    public function monthlyExchangeRate() 
+    public function monthlyExchangeRate()
     {
         $devizak = Cache::get('available_currencies');
-        if (!$devizak) 
+        if (!$devizak)
         {
             $devizak = $this->getAllCurrencies();
             Cache::put('available_currencies', $devizak, 3600);
@@ -132,10 +135,10 @@ class MNBController extends Controller
     /**
      * Devizapárok megjelenítése
      */
-    public function showCurrencyPair() 
+    public function showCurrencyPair()
     {
         $devizak = Cache::get('available_currencies');
-        if (!$devizak) 
+        if (!$devizak)
         {
             $devizak = $this->getAllCurrencies();
             Cache::put('available_currencies', $devizak, 3600);

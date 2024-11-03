@@ -21,6 +21,8 @@
     <link href="{{ URL::asset('assets/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet">
+    @livewireStyles
+
 </head>
 <body>
 
@@ -124,7 +126,6 @@
         <!-- Navbar & Hero End -->
         <main class="py-0 ">
             @yield('content')
-
         </main>
 
         <!-- Footer Start -->
@@ -181,6 +182,7 @@
         <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
 </div>
 
+    @livewireScripts
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="{{ URL::asset('assets/lib/wow/wow.min.js') }}"></script>

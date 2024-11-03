@@ -8,7 +8,7 @@
             </div>
         </div>
         <div wire:loading>
-            Saving post...
+            Betöltés...
         </div>
     </form>
     <div class="table-responsive">
