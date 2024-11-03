@@ -193,6 +193,7 @@
     <script src="{{ URL::asset('assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/main.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
 
 </body>
 </html>

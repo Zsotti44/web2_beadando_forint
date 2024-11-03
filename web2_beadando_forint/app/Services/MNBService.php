@@ -24,7 +24,7 @@ class MNBService
         }
     }
 
-    public function getWsdl() 
+    public function getWsdl()
     {
         $response = file_get_contents($this->wsdl);
         //error_log("wsdl: " . print_r($response, true));
@@ -61,8 +61,7 @@ class MNBService
         return $temp;
     }
 
-    // Havi árfolyam lekérdezése
-    public function getMonthlyRates($currency,$year,$month)
+    public function getMonthlyRates($currencies, $year, $month)
     {
         $startDate = Carbon::create($year, $month, 1)->format('Y-m-d');
         $endDate = Carbon::create($year, $month, 1)->endOfMonth()->format('Y-m-d');
@@ -70,24 +69,42 @@ class MNBService
         $params = [
             'startDate' => $startDate,
             'endDate' => $endDate,
-            'currencyNames' => $currency,
+            'currencyNames' => implode(',', $currencies), // Tömb átalakítása stringgé
         ];
 
         try {
             $response = $this->call('GetExchangeRates', [$params]);
             $xml = simplexml_load_string($response->GetExchangeRatesResult);
 
+            // Ellenőrizzük, hogy a $xml valóban tömb-e
+            if ($xml === false) {
+                error_log('XML Parsing Error: ' . print_r(libxml_get_errors(), true));
+                return []; // Visszaadunk egy üres tömböt hiba esetén
+            }
+
             $temp = [];
             foreach ($xml->Day as $day) {
-                $temp[] = [
-                    'date' => (string)$day['date'],
-                    'rate' => (string)$day->Rate,
-                ];
+                $date = (string)$day['date']; // Kivesszük a dátumot a ciklus elején
+                $temp[$date] = []; // Inicializáljuk a dátumot
+
+                foreach ($day->Rate as $rateElement) {
+                    $currency = (string)$rateElement['curr'];
+                    $rateValue = (string)$rateElement;
+
+                    // Hozzáadjuk az árfolyamot a dátumhoz
+                    $temp[$date][$currency] = $rateValue;
+                }
             }
+
         } catch (\Exception $e) {
-            $temp = [['error' => 'Hiba: ' . $e->getMessage()]];
+            error_log('Hiba: ' . $e->getMessage());
+            return []; // Visszaadunk egy üres tömböt hiba esetén
         }
-        return $temp;
+
+        return $temp; // Visszaadjuk az árfolyamok tömbjét
     }
+
+
+
 
 }

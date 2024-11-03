@@ -5,11 +5,13 @@ namespace App\Livewire;
 use App\Services\MNBService;
 use Livewire\Component;
 use Illuminate\Support\Facades\Livewire;
+use function Laravel\Prompts\error;
+
 class ExchangeRateChart extends Component
 {
     public MNBService $service;
     public $devizak = [];
-    public $currency;
+    public $currencies;
     public $year;
     public $month;
     public $rates = [];
@@ -18,12 +20,13 @@ class ExchangeRateChart extends Component
     }
     public function getRates(MNBService $service)
     {
-        error_log('GetRatesMeghívva');
-        if ($this->currency && $this->year && $this->month) {
-            $this->rates = $service->GetMonthlyRates($this->currency, $this->year, $this->month);
-            $this->dispatch('ratesUpdated', $this->rates);
-        }
+        $this->rates = [];
+        $this->rates = $service->getMonthlyRates($this->currencies, $this->year, $this->month);
+        $this->dispatch('ratesUpdated', $this->rates);
     }
+
+
+
     public function render()
     {
         return view('livewire.exchange-rate-chart');
