@@ -19,7 +19,7 @@ class SoapClientController extends Controller
     }
 
     public function getErmek() {
-      return response()->json($this->soapClient->getAllErme());
+      return response()->json($this->soapClient->getErmek());
     }
     public function getTervezok() {
       return response()->json($this->soapClient->getTervezok());
