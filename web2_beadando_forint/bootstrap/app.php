@@ -14,6 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->validateCsrfTokens(except: [
             '/soap',
+            '/mnb/*',
         ]);
         $middleware->alias([
             'isAdmin' => \App\Http\Middleware\IsAdmin::class,
