@@ -31,9 +31,12 @@ class ErmeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(\App\Http\Requests\ErmeRequest $request)
     {
-        //
+        $data = $request->validated();
+        $erme = Erme::create($data);
+
+        return response()->json($erme, 201);
     }
 
     /**
@@ -47,9 +50,17 @@ class ErmeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(\App\Http\Requests\ErmeRequest $request, string $id)
     {
-        //
+        $erme = Erme::find($id);
+
+        if (!$erme) {
+            return response()->json(['message' => 'Az érme nem található.'], 404);
+        }
+
+        $erme->update($request->validated());
+
+        return response()->json($erme);
     }
 
     /**
@@ -57,6 +68,14 @@ class ErmeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $erme = Erme::find($id);
+
+        if (!$erme) {
+            return response()->json(['message' => 'Érme nem található.'], 404);
+        }
+
+        $erme->delete();
+
+        return response()->json(['message' => 'Érme sikeresen törölve.']);
     }
 }
