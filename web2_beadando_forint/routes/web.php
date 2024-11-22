@@ -36,6 +36,9 @@ Route::get('/admin/menuk', [\App\Http\Controllers\AdminController::class, 'menuk
 Route::any('/soap', [App\Http\Controllers\SoapServerController::class, 'index']);
 Route::get('/soapData', [\App\Http\Controllers\SoapClientController::class, 'index'])->name('soapData');
 
+/* API / REST */
+Route::any('/rest/erme', [App\Http\Controllers\RestClientController::class, 'index'])->name('rest/erme');
+
 /**
  * SOAP Client controllerek egy helyen /client prefixel
  */

@@ -53,7 +53,8 @@ INSERT INTO `menus` (`menuid`, `menu_nev`, `view`, `menu_title`, `role`, `parent
 (9, 'Adatszolgáltatás', 'mnb/mnb', 'MNB SOAP service', 'none', 8, 8, 1),
 (10, 'Napi árfolyamok', 'mnb/exchangeRate', 'Árfolyam lekérdezés', 'none', 8, 9, 1),
 (11, 'Havi árfolyamok', 'mnb/monthlyExchangeRate', 'Árfolyam lekérdezés', 'none', 8, 10, 1),
-(12, 'Devizapárok', 'mnb/showCurrencyPair', 'Devizapárok lekérése', 'none', 8, 11, 1);
+(12, 'Devizapárok', 'mnb/showCurrencyPair', 'Devizapárok lekérése', 'none', 8, 11, 1),
+(13, 'REST szolgáltatás', '/rest/erme', 'REST szolgáltatás', 'user', 0, 12, 1);
 
 --
 -- Indexek a kiírt táblákhoz
