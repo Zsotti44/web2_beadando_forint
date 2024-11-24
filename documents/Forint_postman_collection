@@ -1,0 +1,533 @@
+{
+	"info": {
+		"_postman_id": "5c7b1a39-7e33-44e3-89ef-452e466b4050",
+		"name": "Forint",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14175503"
+	},
+	"item": [
+		{
+			"name": "akod",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{jelszo}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{felh}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/api/akod?femid=1",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"akod"
+					],
+					"query": [
+						{
+							"key": "femid",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "anyag",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{jelszo}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{felh}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/api/anyag?femid=1",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"anyag"
+					],
+					"query": [
+						{
+							"key": "femid",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "erme",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{jelszo}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{felh}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/api/erme",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"erme"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "erme",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{jelszo}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{felh}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cimlet\": 200, \r\n    \"tomeg\": 2.5, \r\n    \"darab\": 50000, \r\n    \"kiadas\": \"2023-01-01\", \r\n    \"bevonas\": \"2024-12-31\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/api/erme",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"erme"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "erme",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{jelszo}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{felh}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cimlet\": 150, \r\n    \"tomeg\": 2.5, \r\n    \"darab\": 50000, \r\n    \"kiadas\": \"2023-01-01\", \r\n    \"bevonas\": \"2024-12-31\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/api/erme/24",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"erme",
+						"24"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "erme",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{jelszo}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{felh}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}:{{port}}/api/erme/24",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"erme",
+						"24"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tervezo",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{jelszo}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{felh}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/api/tervezo?tid=1",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"tervezo"
+					],
+					"query": [
+						{
+							"key": "tid",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tkod",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{jelszo}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{felh}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/api/tkod?tervezoid=1",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"tkod"
+					],
+					"query": [
+						{
+							"key": "tervezoid",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Soap wsdl",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/soap",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"soap"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Soap adatok",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns1=\"http://127.0.0.1:8000/soap\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" SOAP-ENV:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\r\n\t<SOAP-ENV:Body>\r\n\t\t<ns1:getErmek>\r\n\t\t\t<param0 SOAP-ENC:arrayType=\"xsd:ur-type[0]\" xsi:type=\"SOAP-ENC:Array\"/>\r\n\t\t</ns1:getErmek>\r\n\t</SOAP-ENV:Body>\r\n</SOAP-ENV:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/soap",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"soap"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Soap client",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}:{{port}}/client/ermek",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"client",
+						"ermek"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mnb wsdl",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/mnb/getWsdl",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"mnb",
+						"getWsdl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mnb getAllCurrencies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/mnb/getAllCurrencies",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"mnb",
+						"getAllCurrencies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mnb getDailyRate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"2024-10-28\",\r\n    \"currency\": \"EUR\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/mnb/getDailyRate",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"mnb",
+						"getDailyRate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mnb getMonthlyRates",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"year\" : 2024,\r\n    \"month\" : 9,\r\n    \"currency\" : [\r\n        \"EUR\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/mnb/getMonthlyRates",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"mnb",
+						"getMonthlyRates"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "katonazsoltweb2.testhosting.hu",
+			"type": "string"
+		},
+		{
+			"key": "port",
+			"value": "80",
+			"type": "string"
+		},
+		{
+			"key": "felh",
+			"value": "adrian@adrian.hu",
+			"type": "string"
+		},
+		{
+			"key": "jelszo",
+			"value": "12345678",
+			"type": "string"
+		}
+	]
+}
