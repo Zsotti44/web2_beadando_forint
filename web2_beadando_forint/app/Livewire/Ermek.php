@@ -13,127 +13,29 @@ class Ermek extends Component
 {
     use WithPagination,WithoutUrlPagination;
 
-    public $ermek = [];
-    public $selectedErme = null;
-    public $form = [
-        'ermeid' => null,
-        'cimlet' => 0,
-        'tomeg' => 0.0,
-        'darab' => 0,
-        'kiadas' => null,
-        'bevonas' => null,
-    ];
-    public $url;
-    public $action = 'modosit';
-    
-
-    public function mount($ermek = [])
+    public $search = "";
+    public $ermek_;
+    public function mount()
     {
-        $this->ermek = $ermek;
     }
 
-    public function fetchErmek()
+    public function update()
     {
-        $restController = new RestClientController();
-        $response = $restController->getErmek();
-        $this->mount($response);
+        $this->resetPage();
     }
-
-    public function selectErme($erme = null)
+    public function render(Request $request)
     {
-        if ($erme === null) {
-            $this->selectedErme = [
-                'ermeid' => null,
-                'cimlet' => null,
-                'tomeg' => null,
-                'darab' => null,
-                'kiadas' => null,
-                'bevonas' => null
-            ];
-        } else {
-            $this->selectedErme = $erme;
-        }
-    }
-
-    public function setAction($action) {
-        $this->action = $action;
-
-        if ($action === "rogzites") {
-            $this ->selectErme(null);
-        }
-    }
-
-    public function updateErme()
-    {
-/*         $requestBody = [
-            'ermeid' => $this->selectedErme['ermeid'],
-            'cimlet' => $this->selectedErme['cimlet'],
-            'tomeg' => $this->selectedErme['tomeg'],
-            'darab' => $this->selectedErme['darab'],
-            'kiadas' => $this->selectedErme['kiadas'],
-            'bevonas' => $this->selectedErme['bevonas'],
-        ]; */
-        $restController = new RestClientController();
-        $response = $restController->putErme($this -> selectedErme);
-        error_log('response: ' . json_encode($response));
-        if ($response['status'] === 'success') {
-            session()->flash('success', $response['message']);
-            $this->resetForm(); // frissítés
-        } else {
-            session()->flash('error', $response['message']);
-        }
-        //dd(session()->all());
-    }
-
-    public function deleteErme()
-    {
-        if ($this->selectedErme['ermeid'] === null) {
-            return;
-        }
-
-        $restController = new RestClientController();
-        $response = $restController->deleteErme($this->selectedErme['ermeid']);
-        if ($response['status'] === 'success') {
-            session()->flash('success', $response['message']);
-            $this->resetForm(); // frissítés
-        } else {
-            session()->flash('error', $response['message']);
-        }
-    }
-
-    public function createErme()
-    {
-/*         $requestBody = [
-            'cimlet' => $this->selectedErme['cimlet'],
-            'tomeg' => $this->selectedErme['tomeg'],
-            'darab' => $this->selectedErme['darab'],
-            'kiadas' => $this->selectedErme['kiadas'],
-            'bevonas' => $this->selectedErme['bevonas'],
-        ];  */
-
-        $restController = new RestClientController();
-        $response = $restController->postErme($this -> selectedErme);
-        error_log('response: ' . json_encode($response));
-
-        if ($response['status'] === 'success') {
-            session()->flash('success', $response['message']);
-            $this->resetForm(); // frissítés
-        } else {
-            session()->flash('error', $response['message']);
-        }
-    }
-
-    public function resetForm()
-    {
-        $this->selectedErme = [
-            'ermeid' => null,
-            'cimlet' => null,
-            'tomeg' => null,
-            'darab' => null,
-            'kiadas' => null,
-            'bevonas' => null,
-        ];
-
-        $this->fetchErmek();
+        return view('livewire.ermek', ['ermek' => Erme::with(['anyagok', 'tervezok'])
+            ->when(!empty($this->search), function ($query) {
+                $search = $this->search;
+                $query->where('cimlet', 'like', "%{$search}%")
+                    ->orWhereHas('anyagok', function ($q) use ($search) {
+                        $q->where('femnev', 'like', "%{$search}%");
+                    })
+                    ->orWhereHas('tervezok', function ($q) use ($search) {
+                        $q->where('nev', 'like', "%{$search}%");
+                    });
+            })
+            ->cursorPaginate(10) ]);
     }
 }
