@@ -14,11 +14,13 @@ class RestClientController extends Controller
     public $selectedErme = null;
     protected $user = null;
     protected $restErme = null;
+    protected $url = "";
 
     public function __construct()
     {
         $this->user = Auth::user();
         $this->restErme = new ErmeController();
+        $this->url = 'http://katonazsoltweb2.testhosting.hu/api/erme';
 
     }
     public function mount()
@@ -33,7 +35,6 @@ class RestClientController extends Controller
     public function index()
     {
         //$this->url = config('services.api.base_url') . '/api/erme';
-        $this->url = '/api/erme';
         $this->mount();
         return view('RESTclient.restClient', ['ermek' => $this->ermek]);
     }
@@ -45,26 +46,19 @@ class RestClientController extends Controller
 
     public function loadErmek()
     {
-        $user = Auth::user();
-
-        //$restErme = new ErmeController();
-        $request = new Request();
-        $response = $this->restErme->index($request);
-        $this ->ermek = $response ->getData(true);
-
-        //$response = Http::withBasicAuth($user->email, $user->password)->get(config('services.api.base_url').'/api/erme');
-        //$this ->ermek = $response ->getData(true);
-        error_log('response: ' . $response);
-        /* if ($response->ok()) {
+        $response = Http::withHeaders(['X-Internal-Request' => 'true'])->get($this->url);
+        
+        if ($response->ok()) {
             $this->ermek = $response->json();
         } else {
-            session()->flash('error', 'Nem sikerült betölteni az érméket.');
-        } */ 
-        
+            return [
+                'status' => 'success',
+                'message' => 'Az új adat sikeresen rögzítve!'
+            ];
+        }  
     }
 
     public function postErme($ermeObj) {
-        error_log('POST erme: ' . json_encode($ermeObj));
         
         $requestBody = [
             'cimlet' => $ermeObj['cimlet'],
@@ -73,26 +67,22 @@ class RestClientController extends Controller
             'kiadas' => $ermeObj['kiadas'],
             'bevonas' => $ermeObj['bevonas'],
         ];
-        $response = Http::withBasicAuth($this->user->email, $this->user->password)->post(config('services.api.base_url').'/api/erme', $requestBody);
-        error_log('post response: ' . json_encode($response));
+        $response = Http::withHeaders(['X-Internal-Request' => 'true'])->post($this->url, $requestBody);
 
         if ($response->failed()) {
-            $response = [
+            return [
                 'status' => 'error',
-                'message' => 'A rögzítés nem sikerült!'
+                'message' => $response->body() . PHP_EOL
             ];
-            return $response;
         } else {
-            $response = [
+            return [
                 'status' => 'success',
                 'message' => 'Az új adat sikeresen rögzítve!'
             ];
-            return $response;
         }
     }
      
     public function putErme($ermeObj) {
-        error_log('PUT erme: ' . json_encode($ermeObj));
         
         $requestBody = [
             'ermeid' => $ermeObj['ermeid'],
@@ -102,48 +92,35 @@ class RestClientController extends Controller
             'kiadas' => $ermeObj['kiadas'],
             'bevonas' => $ermeObj['bevonas'],
         ];
-        $response = Http::withBasicAuth($this->user->email, $this->user->password)->put(config('services.api.base_url').'/api/erme/'.$requestBody['ermeid'], $requestBody);
-        error_log('put response: ' . json_encode($response));
-
-/*         $response = [
-            'status' => 'success',
-            'message' => 'A módosítás sikeres!'
-        ];
-        return $response; */
+        $response = Http::withHeaders(['X-Internal-Request' => 'true'])->put($this->url.'/'.$requestBody['ermeid'], $requestBody);
 
         if ($response->failed()) {
-            $response = [
+            return [
                 'status' => 'error',
-                'message' => 'A módosítás sikertelen!'
+                'message' => $response->body() . PHP_EOL
             ];
-            return $response;
         } else {
-            $response = [
+            return [
                 'status' => 'success',
                 'message' => 'A módosítás sikeres!'
             ];
-            return $response;
         }
     }
 
     public function deleteErme($ermeid) {
-        error_log('DELETE erme: ' . json_encode($ermeid));
         
-        $response = Http::withBasicAuth($this->user->email, $this->user->password)->delete(config('services.api.base_url').'/api/erme/'.$ermeid);
-        error_log('delete response: ' . json_encode($response));
+        $response = Http::withHeaders(['X-Internal-Request' => 'true'])->delete($this->url.'/'.$ermeid);
 
         if ($response->failed()) {
-            $response = [
+            return [
                 'status' => 'error',
-                'message' => 'A törleés sikertelen!'
+                'message' => $response->body() . PHP_EOL
             ];
-            return $response;
         } else {
-            $response = [
+            return [
                 'status' => 'success',
                 'message' => 'A törleés sikeres!'
             ];
-            return $response;
         }
     }
 

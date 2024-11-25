@@ -13,11 +13,11 @@ Route::middleware('auth.basic')->get('anyag', [AnyagController::class, 'index'])
 
 Route::middleware('auth.basic')->get('akod', [AKodController::class, 'index']);
 
-Route::middleware('auth.basic')->get('erme', [ErmeController::class, 'index']);
-Route::middleware('auth.basic')->post('erme', [ErmeController::class, 'store']);
-Route::middleware('auth.basic')->put('erme/{id}', [ErmeController::class, 'update']);
-Route::middleware('auth.basic')->delete('erme/{id}', [ErmeController::class, 'destroy']);
-
 Route::middleware('auth.basic')->get('tervezo', [TervezoController::class, 'index']);
 
 Route::middleware('auth.basic')->get('tkod', [TKodController::class, 'index']);
+
+Route::middleware('internal_or_basic_auth')->get('erme', [ErmeController::class, 'index']);
+Route::middleware('internal_or_basic_auth')->post('erme', [ErmeController::class, 'store']);
+Route::middleware('internal_or_basic_auth')->put('erme/{id}', [ErmeController::class, 'update']);
+Route::middleware('internal_or_basic_auth')->delete('erme/{id}', [ErmeController::class, 'destroy']);
