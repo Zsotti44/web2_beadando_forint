@@ -15,7 +15,7 @@ class Erme extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['ermeid', 'cimlet', 'tomeg', 'darab', 'kiadas', 'bevonas'];
+    protected $fillable = ['cimlet', 'tomeg', 'darab', 'kiadas', 'bevonas'];
 
     public function anyagok()
     {
