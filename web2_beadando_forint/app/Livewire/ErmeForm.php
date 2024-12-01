@@ -43,20 +43,7 @@ class ErmeForm extends Component
             return;
         }
 
-        $this->redirect("/generate-pdf/{$erme->id}/{$anyag->id}/{$tervezo->id}");
-     /*   $html = view('PDF.layout', compact('erme', 'anyag', 'tervezo'))->render();
-
-        $pdf = new TCPDF();
-        $pdf->SetCreator(PDF_CREATOR);
-        $pdf->SetAuthor('Forint');
-        $pdf->SetTitle('Érme Információk');
-        $pdf->SetMargins(10, 10, 10);
-        $pdf->SetAutoPageBreak(true, 10);
-        $pdf->AddPage();
-        $pdf->writeHTML($html, true, false, true, false, '');
-        return response($pdf->Output('erme_informaciok.pdf', 'S'))
-            ->header('Content-Type', 'application/pdf')
-            ->header('Content-Disposition', 'inline; filename="erme_informaciok.pdf"');*/
+        $this->redirect("/generate-pdf/{$this->selectedErme}/{$this->selectedAnyag}/{$this->selectedTervezo}");
     }
 
     public function render()

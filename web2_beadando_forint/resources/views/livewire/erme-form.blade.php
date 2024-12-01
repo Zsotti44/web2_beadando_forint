@@ -1,6 +1,11 @@
 <div class="container my-4 ">
 <h2 class="text-center mb-4">Érme Információk</h2>
 
+    @if (session()->has('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
     <form wire:submit.prevent="generatePDF" class="p-4 bg-light border rounded">
         <!-- Érmék -->
         <div class="form-group">

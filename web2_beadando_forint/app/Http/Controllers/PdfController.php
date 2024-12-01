@@ -1,18 +1,27 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Erme;
+use App\Models\Anyag;
+use App\Models\Tervezo;
+use TCPDF;
 
 class PdfController extends Controller
 {
     public function __construct()
     {
     }
-    public function index(){
+
+    public function index()
+    {
         return view('PDF.pdf');
     }
+
     public function generatePDF($ermeid, $femid, $tid)
     {
+        error_log($ermeid);
+        error_log($femid);
+        error_log($tid);
         // A modellek keresése
         $erme = Erme::findOrFail($ermeid);
         $anyag = Anyag::findOrFail($femid);
