@@ -44,6 +44,6 @@ return [
     ],
 
     'api' => [
-        'base_url' => env('APP_URL', 'http://127.0.0.1:8000'),
+        'base_url' => env('APP_URL', 'http://katonazsoltweb2.testhosting.hu'),
     ],
 ];

@@ -25,7 +25,7 @@ class SoapClientService
         }
 
     }
-    public function getAllErme()
+    public function getErmek()
     {
         $response = $this->call('getErmek');
         return $response;

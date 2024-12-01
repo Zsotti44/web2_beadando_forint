@@ -79,9 +79,26 @@ class SoapService
      */
     public function getErmekWithAllInfo()
     {
-        return (object)[
-            'getErmekWithAllInfoResult' => Erme::with(['anyagok', 'tervezok'])->get()->toArray(),
-        ];
+        try {
+            $ermek = Erme::with(['anyagok', 'tervezok'])->get()->toArray();
+
+            if (empty($ermek)) {
+                return (object)[
+                    'getErmekWithAllInfoResult' => [],
+                    'message' => 'Nincsenek elérhető érmék.',
+                ];
+            }
+
+            return (object)[
+                'getErmekWithAllInfoResult' => $ermek,
+            ];
+        } catch (\Exception $e) {
+            // Hiba kezelése
+            return (object)[
+                'getErmekWithAllInfoResult' => [],
+                'error' => 'Hiba történt az adatok lekérdezése során: ' . $e->getMessage(),
+            ];
+        }
     }
 
 

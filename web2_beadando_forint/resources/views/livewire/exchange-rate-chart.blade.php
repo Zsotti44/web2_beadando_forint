@@ -15,7 +15,7 @@
         <!-- Év -->
         <div class="col">
             <label for="ev">Év:</label>
-            <input wire:model="year" class="form-control" type="number" id="ev" required>
+            <input wire:model="year" class="form-control" type="number" min="1956" max="2026" id="ev" required>
         </div>
 
         <!-- Hónap -->

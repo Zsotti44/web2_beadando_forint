@@ -38,26 +38,21 @@ class RestClientController extends Controller
     {
         $user = Auth::user();
 
-        //$restErme = new ErmeController();
-        //$request = new Request();
-        //$response = $restErme->index($request);
-        //$this ->ermek = $response ->getData(true);
-
-        $response = Http::withBasicAuth($user->email, $user->password)->get(config('services.api.base_url').'/api/erme');
-        $this ->ermek = $response ->getData(true);
-        //error_log('response: ' . $response);
+        $response = Http::withBasicAuth($user->email, $user->password)->get(config('services.api.base_url') . '/api/erme');
         if ($response->ok()) {
             $this->ermek = $response->json();
         } else {
-            session()->flash('error', 'Nem sikerült betölteni az érméket.');
-        } 
-        
+           // session()->flash('error', 'Nem sikerült betölteni az érméket.');
+            session()->flash('error', 'Hiba történt: ' . $response->status() . ' - ' . config('services.api.base_url') . '/api/erme');
+
+        }
+
     }
 
     public function postErme($ermeObj) {
         error_log('POST erme: ' . json_encode($ermeObj));
         $restErme = new ErmeController();
-        
+
         $requestBody = [
             'cimlet' => $ermeObj['cimlet'],
             'tomeg' => $ermeObj['tomeg'],
@@ -82,11 +77,11 @@ class RestClientController extends Controller
             return $response;
         }
     }
-     
+
     public function putErme($ermeObj) {
         error_log('PUT erme: ' . json_encode($ermeObj));
         $restErme = new ErmeController();
-        
+
         $requestBody = [
             'ermeid' => $ermeObj['ermeid'],
             'cimlet' => $ermeObj['cimlet'],
@@ -122,7 +117,7 @@ class RestClientController extends Controller
     public function deleteErme($ermeid) {
         error_log('DELETE erme: ' . json_encode($ermeid));
         $restErme = new ErmeController();
-        
+
         $response = Http::withBasicAuth($user->email, $user->password)->delete(config('services.api.base_url').'/api/erme/'.$ermeid);
         error_log('delete response: ' . json_encode($response));
 

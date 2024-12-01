@@ -1,11 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\Models\Erme;
-use App\Models\Anyag;
-use App\Models\Tervezo;
-use TCPDF;
 
 
 class PdfController extends Controller
@@ -14,35 +9,32 @@ class PdfController extends Controller
     {
     }
     public function index(){
-
-        $ermek = Erme::all();
-        $anyagok = Anyag::all();
-        $tervezok = Tervezo::all();
-        return view('PDF.pdf', compact('ermek', 'anyagok', 'tervezok'));
+        return view('PDF.pdf');
     }
-    public function generatePDF(Request $request)
+    public function generatePDF($ermeid, $femid, $tid)
     {
-        $erme = Erme::find($request->input('ermeid'));
-        $anyag = Anyag::find($request->input('femid'));
-        $tervezo = Tervezo::find($request->input('tid'));
+        // A modellek keresése
+        $erme = Erme::findOrFail($ermeid);
+        $anyag = Anyag::findOrFail($femid);
+        $tervezo = Tervezo::findOrFail($tid);
 
-        // Nézet renderelése HTML-be
+        // HTML nézet generálása
         $html = view('PDF.layout', compact('erme', 'anyag', 'tervezo'))->render();
 
-        // TCPDF inicializálása és beállítása
+        // TCPDF PDF generálása
         $pdf = new TCPDF();
         $pdf->SetCreator(PDF_CREATOR);
         $pdf->SetAuthor('Forint');
         $pdf->SetTitle('Érme Információk');
         $pdf->SetMargins(10, 10, 10);
-        $pdf->SetAutoPageBreak(TRUE, 10);
+        $pdf->SetAutoPageBreak(true, 10);
         $pdf->AddPage();
-
-        // HTML hozzáadása a TCPDF-hez
         $pdf->writeHTML($html, true, false, true, false, '');
 
-        // PDF letöltése
-        $pdf->Output('erme_informaciok.pdf', 'D');
+        // PDF válasz visszaadása
+        return response($pdf->Output('erme_informaciok.pdf', 'S'))
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', 'inline; filename="erme_informaciok.pdf"');
     }
 
 }

@@ -9,7 +9,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/pdf', [App\Http\Controllers\PdfController::class, 'index'])->name('pdf');
-Route::post('/generate-pdf', [App\Http\Controllers\PdfController::class, 'generatePDF']);
+Route::get('/generate-pdf/{ermeid}/{femid}/{tid}', [App\Http\Controllers\PdfController::class, 'generatePDF'])->name('generate.pdf');
 
 /**
  * MNB-s controllerek egy helyen /mnb prefixel
