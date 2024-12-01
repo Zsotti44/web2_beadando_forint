@@ -22,14 +22,18 @@ class ErmeForm extends Component
     public function mount()
     {
         $this->ermek = Erme::all();
-        $this->anyagok = Anyag::all();
-        $this->tervezok = Tervezo::all();
     }
 
     public function updatedSelectedErme($value)
     {
-        $this->filteredAnyagok = Erme::find($value)?->anyagok ?? [];
-        $this->filteredTervezok = Erme::find($value)?->tervezok ?? [];
+        if ($value) {
+            $erme = Erme::with('anyagok', 'tervezok')->find($value);
+            $this->filteredAnyagok = $erme ? $erme->anyagok : [];
+            $this->filteredTervezok = $erme ? $erme->tervezok : [];
+        } else {
+            $this->filteredAnyagok = [];
+            $this->filteredTervezok = [];
+        }
     }
 
     public function generatePDF()

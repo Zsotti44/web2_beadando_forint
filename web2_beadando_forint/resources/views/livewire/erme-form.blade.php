@@ -10,7 +10,7 @@
         <!-- Érmék -->
         <div class="form-group">
             <label for="selectedErme">Érme Címletek:</label>
-            <select wire:model="selectedErme" class="form-control" id="selectedErme">
+            <select wire:model.lazy="selectedErme" class="form-control" id="selectedErme">
                 <option value="">Válasszon címletet</option>
                 @foreach ($ermek as $erme)
                     <option value="{{ $erme->ermeid }}">{{ $erme->cimlet }} forint</option>
