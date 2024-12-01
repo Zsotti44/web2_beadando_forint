@@ -18,6 +18,7 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
         $middleware->alias([
             'isAdmin' => \App\Http\Middleware\IsAdmin::class,
+            'internal_or_basic_auth' => \App\Http\Middleware\InternalOrBasicAuth::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

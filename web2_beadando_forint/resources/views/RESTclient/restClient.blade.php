@@ -1,4 +1,4 @@
 @extends('layouts.app')
 @section('content')
-    @livewire('ermek', ['ermek' => $ermek])
+    @livewire('rest-client', ['ermek' => $ermek])
 @endsection
